@@ -1,0 +1,64 @@
+
+body {
+	font-family: 'Open Sans', Helvetica, San-Serif
+}
+
+.header { 
+	margin: 3rem 0;
+	text-align: center;
+}
+
+h1,
+h3 {
+	margin: 1rem 0;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+hr {
+	margin-bottom: 3rem;
+	margin-top: 3rem;
+	width: 80%;
+}
+
+.form {
+	display: flex;
+	justify-content: center;
+}
+
+input,
+textarea {
+	border: .1rem solid #000;
+	display: block;
+	margin: 0 1rem;
+	padding: 0.3rem;
+	width: 15rem;
+}
+
+.list-items { 
+	text-align: center;
+}
+
+li {
+	border: .1rem solid #000;
+	margin: 1rem auto;
+	padding: 1rem;
+	width: 50%;
+}
+
+button {
+	background-color: #000;
+	color: #FFF;
+}
+
+li button {
+	border-radius: 25px;
+	float: right;
+	padding: .5rem .7rem;
+}
