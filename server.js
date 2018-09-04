@@ -28,7 +28,8 @@ app.get('/api/v1/list_items', (request, response) => {
 });
 
 app.get('/api/v1/list_items/:id', (request, response) => {
-	const { id } = request.params
+	const { id } = request.params;
+
 	database('list_items').where('id', id).select()
 		.then(listItems => {
 			if (listItems.length) {
@@ -38,7 +39,7 @@ app.get('/api/v1/list_items/:id', (request, response) => {
 			};
 		})
 		.catch(error => {
-			return response.status(500).send({ error });
+			return response.status(500).json({ error });
 		});
 });
 
@@ -60,6 +61,27 @@ app.post('/api/v1/list_items', (request, response) => {
 		})
 });
 
+app.delete('/api/v1/list_items/:id', (request, response) => {
+	const { id } = request.params;
+
+	database('list_items').where('id', id).select()
+		.then(listItems => {
+			if (listItems.length) {
+				database('list_items').where('id', id).del()
+					.then(listItems => {
+						return response.status(204).send(`Record: "${id}" successfully deleted`)
+					})
+					.catch(error => {
+						return response.status(500).json({ error })
+					})
+			} else {
+					return response.status(404).json({error: `could not find list item with id: "${id}"`});
+			};
+		})
+		.catch(error => {
+			return response.status(500).json({ error })
+		})
+});
 
 app.listen(app.get('port'), () => {
 	console.log(`${app.locals.title} is running on ${app.get('port')}.`);
