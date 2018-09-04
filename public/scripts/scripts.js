@@ -12,7 +12,7 @@ async function getListItems() {
 function createListItem(event) {
 	event.preventDefault();
 	const title = event.target[0].value;
-	const description = event.target[0].value;
+	const description = event.target[1].value;
 	if (title.length && description.length) {
 		sendListItemToDB({title, description});
 		$('.title').val('');
